@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Котики</title>
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .card h3 {
+            margin-top: 10px;
+        }
+        
+        .card p {
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="catContainer"></div>
+
+    <script src="https://cats.petiteweb.dev/simple/assets/cats.js"></script>
+    <script>
+        const catContainer = document.getElementById('catContainer');
+
+        cats.forEach(cat => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            const img = document.createElement('img');
+            img.src = cat.img_link;
+            card.appendChild(img);
+
+            const name = document.createElement('h3');
+            name.textContent = cat.name;
+            card.appendChild(name);
+
+            const age = document.createElement('p');
+            age.textContent = `Возраст: ${cat.age} год(а)`;
+            card.appendChild(age);
+
+            const rate = document.createElement('p');
+            rate.textContent = `Рейтинг: ${cat.rate}`;
+            card.appendChild(rate);
+
+            const description = document.createElement('p');
+            description.textContent = cat.description;
+            card.appendChild(description);
+
+            catContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
